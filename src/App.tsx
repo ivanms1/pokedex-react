@@ -29,8 +29,8 @@ function App() {
           sprite: data.sprites.front_default,
           types: data.types.map((type: any) => type.type.name),
           abilities: data.abilities.map((ability: any) => ability.ability.name),
-          height: data.height,
-          weight: data.weight
+          height: (data.height * 0.1).toFixed(1),
+          weight: (data.weight * 0.1).toFixed(1)
         });
       });
   };
