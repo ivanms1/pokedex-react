@@ -24,7 +24,6 @@ function App() {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.value}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setSelectedPokemon({
           name: data.name,
           sprite: data.sprites.front_default,
