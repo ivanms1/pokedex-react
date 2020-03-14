@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
+import Spinner from './components/Spinner';
+import Pokemon from './components/Pokemon';
+
 import { pokemonOptions } from './assets/pokemons';
 
 import './App.css';
-import BaseStats from './components/BaseStats';
-import Spinner from './components/Spinner';
 
 type PokemonType = {
   sprite: string;
@@ -77,56 +78,7 @@ function App() {
           menuIsOpen={menuIsOpen}
         />
         {!loading ? (
-          selectedPokemon && (
-            <div className='Pokemon'>
-              <img
-                src={selectedPokemon.sprite}
-                className='PokemonImage'
-                alt={selectedPokemon.name}
-              />
-              <div className='InfoStatsContainer'>
-                <div className='Info'>
-                  <div className='TypesContainer'>
-                    <span>Types:</span>
-                    <div className='Types'>
-                      {selectedPokemon.types.map(type => (
-                        <span key={type} className={`Type ${type}`}>
-                          {type}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className='Abilities'>
-                    <span>Abilities:</span>
-                    <div>
-                      {selectedPokemon.abilities.map(ability => (
-                        <span key={ability} className='Ability'>
-                          {ability.replace('-', ' ')}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className='Abilities'>
-                    <span>Heigth:</span>
-                    <div>
-                      <span className='Ability'>
-                        {selectedPokemon.height} m
-                      </span>
-                    </div>
-                  </div>
-                  <div className='Abilities'>
-                    <span>Weight:</span>
-                    <div>
-                      <span className='Ability'>
-                        {selectedPokemon.weight} kg
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <BaseStats baseStats={selectedPokemon.baseStats} />
-              </div>
-            </div>
-          )
+          selectedPokemon && <Pokemon pokemon={selectedPokemon} />
         ) : (
           <Spinner />
         )}

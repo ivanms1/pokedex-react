@@ -153,8 +153,9 @@ const BaseStats = ({ baseStats }: BaseStatsProps) => {
             )}
           />
         </div>
-        <div>
-          <span>Total: {total}</span>
+        <div className={styles.Total}>
+          <span>Total: </span>
+          <span className={styles.TotalNumber}>{total}</span>
         </div>
       </div>
     </div>

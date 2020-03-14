@@ -1,5 +1,5 @@
 .BaseStats {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .Stats {
@@ -13,7 +13,7 @@
 
 .StatInfo {
   display: flex;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   justify-content: space-between;
   width: 100px;
 }
@@ -44,4 +44,17 @@
 .StatBar.green {
   background: hsl(127, 85%, 45%);
   border-color: hsl(127, 75%, 35%);
+}
+
+.Total {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.TotalNumber {
+  font-weight: bold;
+  margin-right: 0.3rem;
 }
