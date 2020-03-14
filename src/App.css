@@ -23,7 +23,12 @@
 
 .Select {
   min-width: 200px;
-  margin-bottom: 1rem;
+}
+
+.Credit {
+  font-size: 0.9rem;
+  position: fixed;
+  bottom: 2rem;
 }
 
 @media (min-width: 800px) {

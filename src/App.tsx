@@ -83,6 +83,16 @@ function App() {
           <Spinner />
         )}
       </div>
+      <p className='Credit'>
+        Made by{' '}
+        <a
+          target='_blank'
+          rel='noopener noreferrer'
+          href='https://www.ivansaldano.com/'
+        >
+          Ivan
+        </a>
+      </p>
     </div>
   );
 }
