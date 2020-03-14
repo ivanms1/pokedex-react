@@ -4,6 +4,8 @@ import Select from 'react-select';
 import { pokemonOptions } from './assets/pokemons';
 
 import './App.css';
+import BaseStats from './components/BaseStats';
+import Spinner from './components/Spinner';
 
 type PokemonType = {
   sprite: string;
@@ -12,6 +14,14 @@ type PokemonType = {
   abilities: string[];
   height: string;
   weight: string;
+  baseStats: {
+    hp: number;
+    attack: number;
+    defense: number;
+    specialAttack: number;
+    specialDefense: number;
+    speed: number;
+  };
 };
 
 function App() {
@@ -19,8 +29,10 @@ function App() {
     null
   );
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (pokemon: any) => {
+    setLoading(true);
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.value}`)
       .then(res => res.json())
       .then(data => {
@@ -30,8 +42,17 @@ function App() {
           types: data.types.map((type: any) => type.type.name),
           abilities: data.abilities.map((ability: any) => ability.ability.name),
           height: (data.height * 0.1).toFixed(1),
-          weight: (data.weight * 0.1).toFixed(1)
+          weight: (data.weight * 0.1).toFixed(1),
+          baseStats: {
+            hp: data.stats[5].base_stat,
+            attack: data.stats[4].base_stat,
+            defense: data.stats[3].base_stat,
+            specialAttack: data.stats[2].base_stat,
+            specialDefense: data.stats[1].base_stat,
+            speed: data.stats[0].base_stat
+          }
         });
+        setLoading(false);
       });
   };
 
@@ -55,49 +76,59 @@ function App() {
           options={pokemonOptions}
           menuIsOpen={menuIsOpen}
         />
-        {selectedPokemon && (
-          <div className='Pokemon'>
-            <img
-              src={selectedPokemon.sprite}
-              className='PokemonImage'
-              alt={selectedPokemon.name}
-            />
-            <div className='Info'>
-              <div className='TypesContainer'>
-                <span>Types:</span>
-                <div className='Types'>
-                  {selectedPokemon.types.map(type => (
-                    <span key={type} className={`Type ${type}`}>
-                      {type}
-                    </span>
-                  ))}
+        {!loading ? (
+          selectedPokemon && (
+            <div className='Pokemon'>
+              <img
+                src={selectedPokemon.sprite}
+                className='PokemonImage'
+                alt={selectedPokemon.name}
+              />
+              <div className='InfoStatsContainer'>
+                <div className='Info'>
+                  <div className='TypesContainer'>
+                    <span>Types:</span>
+                    <div className='Types'>
+                      {selectedPokemon.types.map(type => (
+                        <span key={type} className={`Type ${type}`}>
+                          {type}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className='Abilities'>
+                    <span>Abilities:</span>
+                    <div>
+                      {selectedPokemon.abilities.map(ability => (
+                        <span key={ability} className='Ability'>
+                          {ability.replace('-', ' ')}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className='Abilities'>
+                    <span>Heigth:</span>
+                    <div>
+                      <span className='Ability'>
+                        {selectedPokemon.height} m
+                      </span>
+                    </div>
+                  </div>
+                  <div className='Abilities'>
+                    <span>Weight:</span>
+                    <div>
+                      <span className='Ability'>
+                        {selectedPokemon.weight} kg
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              <div className='Abilities'>
-                <span>Abilities:</span>
-                <div>
-                  {selectedPokemon.abilities.map(ability => (
-                    <span key={ability} className='Ability'>
-                      {ability.replace('-', ' ')}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className='Abilities'>
-                <span>Heigth:</span>
-                <div>
-                  <span className='Ability'>{selectedPokemon.height} m</span>
-                </div>
-              </div>
-              <div className='Abilities'>
-                <span>Weight:</span>
-                <div>
-                  <span className='Ability'>{selectedPokemon.weight} kg</span>
-                </div>
+                <BaseStats baseStats={selectedPokemon.baseStats} />
               </div>
             </div>
-          </div>
+          )
+        ) : (
+          <Spinner />
         )}
       </div>
     </div>

@@ -1,0 +1,47 @@
+.BaseStats {
+  font-size: 0.9rem;
+}
+
+.Stats {
+  margin-left: 1rem;
+}
+
+.Stat {
+  align-items: center;
+  display: flex;
+}
+
+.StatInfo {
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: space-between;
+  width: 100px;
+}
+
+.StatNumber {
+  align-self: flex-end;
+  font-weight: bold;
+  margin-right: 0.3rem;
+}
+
+.StatBar {
+  height: 12px;
+  border-radius: 2px;
+  box-shadow: inset 1px 4px 0 rgba(255, 255, 255, 0.4),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.StatBar.red {
+  background: hsl(21, 85%, 45%);
+  border-color: hsl(21, 75%, 35%);
+}
+
+.StatBar.yellow {
+  background: hsl(60, 85%, 45%);
+  border-color: hsl(60, 75%, 35%);
+}
+
+.StatBar.green {
+  background: hsl(127, 85%, 45%);
+  border-color: hsl(127, 75%, 35%);
+}

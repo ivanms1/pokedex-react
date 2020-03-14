@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  background-color: #f4f4f4;
 }
 
 .App {
@@ -8,13 +9,16 @@
   color: #777777;
   flex-direction: column;
   align-items: center;
-  background-color: #f4f4f4;
   height: calc(100vh - 20rem);
-  padding: 10rem 5rem;
+  padding: 5rem;
 }
 
 .Pokedex {
   padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .Select {
@@ -32,6 +36,11 @@
 
 .PokemonImage {
   height: 150px;
+}
+
+.InfoStatsContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .Info {
