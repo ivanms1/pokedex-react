@@ -3,6 +3,16 @@ import classNames from 'classnames';
 
 import styles from './BaseStats.module.css';
 
+const getBarColor = (stat: number) => {
+  if (stat < 50) {
+    return 'red';
+  }
+  if (stat < 100) {
+    return 'yellow';
+  }
+  return 'green';
+};
+
 interface BaseStatsProps {
   baseStats: {
     hp: number;
@@ -30,15 +40,7 @@ const BaseStats = ({ baseStats }: BaseStatsProps) => {
             style={{ width: baseStats.hp }}
             className={classNames(
               styles.StatBar,
-              {
-                [styles.red]: baseStats.hp <= 50
-              },
-              {
-                [styles.yellow]: baseStats.hp > 50 && baseStats.hp < 100
-              },
-              {
-                [styles.green]: baseStats.hp > 99
-              }
+              styles[getBarColor(baseStats.hp)]
             )}
           />
         </div>
@@ -51,15 +53,7 @@ const BaseStats = ({ baseStats }: BaseStatsProps) => {
             style={{ width: baseStats.attack }}
             className={classNames(
               styles.StatBar,
-              {
-                [styles.red]: baseStats.attack <= 50
-              },
-              {
-                [styles.yellow]: baseStats.attack > 50 && baseStats.attack < 100
-              },
-              {
-                [styles.green]: baseStats.attack > 99
-              }
+              styles[getBarColor(baseStats.attack)]
             )}
           />
         </div>
@@ -72,16 +66,7 @@ const BaseStats = ({ baseStats }: BaseStatsProps) => {
             style={{ width: baseStats.defense }}
             className={classNames(
               styles.StatBar,
-              {
-                [styles.red]: baseStats.defense <= 50
-              },
-              {
-                [styles.yellow]:
-                  baseStats.defense > 50 && baseStats.defense < 100
-              },
-              {
-                [styles.green]: baseStats.defense > 99
-              }
+              styles[getBarColor(baseStats.defense)]
             )}
           />
         </div>
@@ -94,16 +79,7 @@ const BaseStats = ({ baseStats }: BaseStatsProps) => {
             style={{ width: baseStats.specialAttack }}
             className={classNames(
               styles.StatBar,
-              {
-                [styles.red]: baseStats.specialAttack <= 50
-              },
-              {
-                [styles.yellow]:
-                  baseStats.specialAttack > 50 && baseStats.specialAttack < 100
-              },
-              {
-                [styles.green]: baseStats.specialAttack > 99
-              }
+              styles[getBarColor(baseStats.specialAttack)]
             )}
           />
         </div>
@@ -118,17 +94,7 @@ const BaseStats = ({ baseStats }: BaseStatsProps) => {
             style={{ width: baseStats.specialDefense }}
             className={classNames(
               styles.StatBar,
-              {
-                [styles.red]: baseStats.specialDefense <= 50
-              },
-              {
-                [styles.yellow]:
-                  baseStats.specialDefense > 50 &&
-                  baseStats.specialDefense < 100
-              },
-              {
-                [styles.green]: baseStats.specialDefense > 99
-              }
+              styles[getBarColor(baseStats.specialDefense)]
             )}
           />
         </div>
@@ -141,15 +107,7 @@ const BaseStats = ({ baseStats }: BaseStatsProps) => {
             style={{ width: baseStats.speed }}
             className={classNames(
               styles.StatBar,
-              {
-                [styles.red]: baseStats.speed <= 50
-              },
-              {
-                [styles.yellow]: baseStats.speed > 50 && baseStats.speed < 100
-              },
-              {
-                [styles.green]: baseStats.speed > 99
-              }
+              styles[getBarColor(baseStats.speed)]
             )}
           />
         </div>
