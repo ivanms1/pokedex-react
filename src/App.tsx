@@ -90,7 +90,7 @@ function App() {
           options={pokemonOptions}
           menuIsOpen={menuIsOpen}
         />
-        {loading ? (
+        {!loading ? (
           selectedPokemon && <Pokemon pokemon={selectedPokemon} />
         ) : (
           <Spinner />
