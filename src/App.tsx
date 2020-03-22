@@ -67,7 +67,20 @@ function App() {
 
   return (
     <div className='App'>
-      <h1 className='Title'>Pokedex</h1>
+      <div>
+        <h1 className='Title'>Pokedex</h1>
+        <p className='Credit'>
+          Made by{' '}
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://www.ivansaldano.com/'
+          >
+            Ivan
+          </a>
+        </p>
+      </div>
+
       <div className='Pokedex'>
         <Select
           className='Select'
@@ -77,22 +90,12 @@ function App() {
           options={pokemonOptions}
           menuIsOpen={menuIsOpen}
         />
-        {!loading ? (
+        {loading ? (
           selectedPokemon && <Pokemon pokemon={selectedPokemon} />
         ) : (
           <Spinner />
         )}
       </div>
-      <p className='Credit'>
-        Made by{' '}
-        <a
-          target='_blank'
-          rel='noopener noreferrer'
-          href='https://www.ivansaldano.com/'
-        >
-          Ivan
-        </a>
-      </p>
     </div>
   );
 }

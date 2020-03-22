@@ -30,8 +30,7 @@ body {
 
 .Credit {
   font-size: 0.9rem;
-  position: fixed;
-  bottom: 2rem;
+  text-align: right;
 }
 
 @media (min-width: 800px) {
