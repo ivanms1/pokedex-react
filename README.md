@@ -1,4 +1,4 @@
-## Pokedex
+## Pokedex App With React
 
 In the project directory, you can run:
 
